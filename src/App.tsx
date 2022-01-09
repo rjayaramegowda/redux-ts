@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 function App() {
   return (
-    <div className='container mt-5'>
+    <div className="container mt-5">
       <h1>Welcome</h1>
     </div>
   );
