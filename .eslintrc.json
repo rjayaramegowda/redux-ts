@@ -1,5 +1,5 @@
 {
-    "parser": "@babel/eslint-parser",
+    "parser": "@typescript-eslint/parser",
     "extends": [
       "airbnb",
       "airbnb/hooks",
@@ -9,7 +9,8 @@
       "plugin:prettier/recommended",
       "plugin:compat/recommended",
       "prettier",
-      "plugin:jsx-a11y/recommended"
+      "plugin:jsx-a11y/recommended",
+      "plugin:@typescript-eslint/recommended"
     ],
     "env": {
       "browser": true,
@@ -20,7 +21,8 @@
     "plugins": [
       "react",
       "react-hooks",
-      "eslint-plugin-jsx-a11y"
+      "eslint-plugin-jsx-a11y",
+      "@typescript-eslint"
     ],
     "parserOptions": {
       "ecmaVersion": 6,
