@@ -1,39 +1,78 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
+    "parser": "@babel/eslint-parser",
     "extends": [
-        "airbnb", 
-        "prettier",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+      "airbnb",
+      "airbnb/hooks",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:import/recommended",
+      "plugin:prettier/recommended",
+      "plugin:compat/recommended",
+      "prettier",
+      "plugin:jsx-a11y/recommended"
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 13,
-        "sourceType": "module"
+    "env": {
+      "browser": true,
+      "node": true,
+      "jest": true,
+      "es6": true
     },
     "plugins": [
-        "react",
-        "@typescript-eslint",
-        "prettier"
+      "react",
+      "react-hooks",
+      "eslint-plugin-jsx-a11y"
     ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "requireConfigFile": false,
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-        "prettier/prettier": "warn",
-        "no-unused-vars": "warn",
-        "no-console": "off",
-        "func-names": "off",
-        "no-process-exit": "off",
-        "object-shorthand": "off",
-        "class-methods-use-this": "off",
-        "import/no-unresolved": "off",
-        "import/order": "off",
-        "import/extensions": "off"
+      "react/function-component-definition": [2, {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }],
+      "max-len": ["error", { "code": 120 }],
+      "react/jsx-filename-extension": [
+        1,
+        { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+      ],
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "jsx-a11y/no-noninteractive-element-interactions": "off",
+      "jsx-props-no-spreading": "off",
+      "react/jsx-key": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/no-unescaped-entities": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "react/prop-types": "off",
+      "array-callback-return": "off",
+      "no-unused-vars": "off",
+      "react/display-name": "off",
+      "react/sort-comp": "off",
+      "no-loop-func": "off",
+      "react/no-access-state-in-setstate": "off",
+      "block-scoped-var": "off",
+      "import/extensions": "off",
+      "react/destructuring-assignment": "off",
+      "consistent-return": "off",
+      "react/no-direct-mutation-state": "off",
+      "camelcase":"off"
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": ["node_modules", "src/"]
+        }
+      }
+    },
+    "globals": {
+      "document": true,
+      "window": true
     }
-}
+  }
+  
