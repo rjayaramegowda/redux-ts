@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import usePlacesAutocomplete from "use-places-autocomplete";
 
 export default function App() {
@@ -12,6 +12,10 @@ export default function App() {
   const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
+
+  useEffect(() => {
+    console.log(JSON.stringify(data[0]));
+  }, [data]);
 
   function renderList(): JSX.Element {
     const suggestions = data.map(({ place_id, description }: any) => (
