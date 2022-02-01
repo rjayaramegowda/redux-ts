@@ -7,13 +7,15 @@ function App() {
   const [carType, setCarType] = useState<any>([]);
   const [capacityPassengers, setCapacityPassengers] = useState<any>([]);
   const [capacityBags, setCapacityBags] = useState<any>([]);
+  const [vendor, setVendor] = useState<any>([]);
 
   useEffect(() => {
     setCarList([...Cars]);
     setPriceList([{ min: 0, max: 110 }]);
     setCarType(["ECAR", "MVAR"]);
-    setCapacityPassengers([{ min: 3, max: 10 }]);
-    setCapacityBags([{ min: 3, max: 7 }]);
+    setCapacityPassengers([{ min: 2, max: 10 }]);
+    setCapacityBags([{ min: 2, max: 7 }]);
+    setVendor(['Avis'])
   }, []);
 
   function filterCars() {
@@ -22,9 +24,10 @@ function App() {
       let byCarType = filterByCarType(item);
       let byCapacityPassengers = filterByCapacityPassengers(item);
       let byCapacityBags = filterByCapacityBags(item);
+      let byVendor = filterByVendor(item)
 
-      let isMatching =
-        !byPrice || !byCarType || !byCapacityPassengers || !byCapacityBags
+      let isMatching = 
+        !byPrice || !byCarType || !byCapacityPassengers || !byCapacityBags || !byVendor
           ? false
           : true;
       return isMatching;
@@ -79,6 +82,16 @@ function App() {
     return isFound;
   }
 
+  function filterByVendor(item: any) {
+    let isFound = vendor.length > 0 ? false : true;
+    vendor.forEach((element: string) => {
+      if (!isFound) {
+        isFound = element === item.availableCore.vendor?.name;
+      }
+    });
+    return isFound;
+  }
+
   return (
     <div className="container mt-5">
       <h1>{carList.length} cars found</h1>
@@ -102,7 +115,7 @@ function App() {
             <td>{item.availableCore.vehicle.carName}</td>
             <td>{item.availableCore.totalCharge.estimatedTotal}</td>
             <td>{item.availableCore.vendor?.name}</td>
-            <td>{item.availableInfo.coverages.map((item:any) => (<li>{item.type}</li>))}</td>
+            <td>{item.availableInfo.coverages.map((item:any) => (<li>{item.type} charge: {item.unitCharge}</li>))}</td>
             <td>{item.availableCore.vehicle.passengerQuantity}</td>
             <td>{item.availableCore.vehicle.baggageQuantity}</td>
             <td>{item.availableCore.vehicle.carType}</td>
