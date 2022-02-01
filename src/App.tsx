@@ -9,13 +9,15 @@ function App() {
   const [capacityBags, setCapacityBags] = useState<any>([]);
   const [vendor, setVendor] = useState<any>([]);
 
+  const policy = ["Airport Service Charge", "Other taxes and service charges"];
+
   useEffect(() => {
     setCarList([...Cars]);
-    setPriceList([{ min: 0, max: 110 }]);
-    setCarType(["ECAR", "MVAR"]);
+    setPriceList([{ min: 100, max: 300 }]);
+    setCarType([]);
     setCapacityPassengers([{ min: 2, max: 10 }]);
     setCapacityBags([{ min: 2, max: 7 }]);
-    setVendor(['Avis'])
+    setVendor(['Thrifty US'])
   }, []);
 
   function filterCars() {
@@ -24,10 +26,12 @@ function App() {
       let byCarType = filterByCarType(item);
       let byCapacityPassengers = filterByCapacityPassengers(item);
       let byCapacityBags = filterByCapacityBags(item);
-      let byVendor = filterByVendor(item)
+      let byVendor = filterByVendor(item);
+      let byPolicy = filterByPolicy(item);
+
 
       let isMatching = 
-        !byPrice || !byCarType || !byCapacityPassengers || !byCapacityBags || !byVendor
+        !byPrice || !byCarType || !byCapacityPassengers || !byCapacityBags || !byVendor || !byPolicy
           ? false
           : true;
       return isMatching;
@@ -92,6 +96,21 @@ function App() {
     return isFound;
   }
 
+  function filterByPolicy(item: any) {
+    let isFound = policy.length > 0 ? false : true;
+    policy.forEach((element: any) => {
+      if (!isFound) {
+        var n = 0;
+        try {
+         n =  Number(item.availableInfo.coverages.filter((vo:any) => vo.type === element)[0]?.unitCharge) || 0;
+        }catch(e:any){}
+        console.log(n);
+        isFound = n === 0;
+      }
+    });
+    return isFound;
+  }
+
   return (
     <div className="container mt-5">
       <h1>{carList.length} cars found</h1>
@@ -115,7 +134,7 @@ function App() {
             <td>{item.availableCore.vehicle.carName}</td>
             <td>{item.availableCore.totalCharge.estimatedTotal}</td>
             <td>{item.availableCore.vendor?.name}</td>
-            <td>{item.availableInfo.coverages.map((item:any) => (<li>{item.type} charge: {item.unitCharge}</li>))}</td>
+            <td>{item.availableInfo.coverages.map((item:any) => (<li>{item.type} - {item.unitCharge} *</li>))}</td>
             <td>{item.availableCore.vehicle.passengerQuantity}</td>
             <td>{item.availableCore.vehicle.baggageQuantity}</td>
             <td>{item.availableCore.vehicle.carType}</td>
