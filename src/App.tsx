@@ -101,8 +101,8 @@ function App() {
           <tr key={index}>
             <td>{item.availableCore.vehicle.carName}</td>
             <td>{item.availableCore.totalCharge.estimatedTotal}</td>
-            <td>{item.availableCore.totalCharge.vendor?.name}</td>
-            <td>{item.availableInfo.coverages[0].type}</td>
+            <td>{item.availableCore.vendor?.name}</td>
+            <td>{item.availableInfo.coverages.map((item:any) => (<li>{item.type}</li>))}</td>
             <td>{item.availableCore.vehicle.passengerQuantity}</td>
             <td>{item.availableCore.vehicle.baggageQuantity}</td>
             <td>{item.availableCore.vehicle.carType}</td>
