@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import todoReducer from "../reducers/todoSlice";
+import todoReducer from "../reducers/slice/todoSlice";
 import { todosApi } from "../reducers/api/todosApi";
 
 export const store = configureStore({
