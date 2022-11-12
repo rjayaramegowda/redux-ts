@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
+import todoReducer from "../features/counter/todoSlice";
 import { todosApi } from "../services/todosApi";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    todo: todoReducer,
     [todosApi.reducerPath]: todosApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,

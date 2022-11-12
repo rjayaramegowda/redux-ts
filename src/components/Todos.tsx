@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useTodosQuery } from "../services/todosApi";
 
-interface IContactsProps {}
+interface ITodosProps {}
 
-const Contacts: React.FunctionComponent<IContactsProps> = (props) => {
+const Todos: React.FunctionComponent<ITodosProps> = (props) => {
   const { data, error, isLoading, isFetching, isSuccess } = useTodosQuery();
   console.log(data);
 
@@ -19,4 +19,4 @@ const Contacts: React.FunctionComponent<IContactsProps> = (props) => {
   );
 };
 
-export default Contacts;
+export default Todos;

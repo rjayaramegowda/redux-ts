@@ -1,10 +1,10 @@
 import React from "react";
-import Contacts from "./components/Contacts";
+import Todos from "./components/Todos";
 
 const App = () => {
   return (
     <div>
-      <Contacts />
+      <Todos />
     </div>
   );
 };
