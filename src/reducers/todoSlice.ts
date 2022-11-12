@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Todo } from "../../models/todo.model";
-import { todosApi } from "../../services/todosApi";
+import { Todo } from "../models/todo.model";
+import { todosApi } from "./api/todosApi";
 
 export interface TodoState {
   todoList: Todo[];

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Todo } from "../models/todo.model";
+import { Todo } from "../../models/todo.model";
 
 export const todosApi = createApi({
   reducerPath: "todosApi",

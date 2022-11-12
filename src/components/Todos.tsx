@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTodosQuery } from "../services/todosApi";
+import { useTodosQuery } from "../reducers/api/todosApi";
 
 interface ITodosProps {}
 
