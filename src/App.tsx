@@ -1,15 +1,28 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import Todos from "./components/Todos";
+import { Col, Container, ListGroup, Row } from "react-bootstrap";
+import TodoForm from "./components/todos/TodoForm";
+import { todosDataProvider } from "./data/todoData";
+import { Todo } from "./models/todo.model";
 
 const App = () => {
   return (
     <div>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col md="3">Side Nav</Col>
+          <Col className="bg-light vh-100" md="3">
+            <ListGroup variant="flush" defaultActiveKey="#link1">
+              {todosDataProvider.map((item: Todo, index: number) => (
+                <ListGroup.Item key={index} action href={`#link${index}`}>
+                  {item.title}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Col>
           <Col>
-            <Todos />
+            <Container>
+              <Row>
+                <TodoForm />
+              </Row>
+            </Container>
           </Col>
         </Row>
       </Container>
