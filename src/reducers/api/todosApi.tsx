@@ -10,10 +10,10 @@ export const todosApi = createApi({
       query: () => "/todos",
       providesTags: ["Todo"],
     }),
-    todo: builder.query<Todo, string>({
+    todo: builder.query<Todo, number>({
       query: (id) => `/todos/${id}`,
     }),
-    deleteTodo: builder.mutation<Todo, string>({
+    deleteTodo: builder.mutation<Todo, number>({
       query(id) {
         return {
           url: `todos/${id}`,

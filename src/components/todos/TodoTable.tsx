@@ -13,7 +13,7 @@ const TodoTable: React.FunctionComponent<ITodoTableProps> = (props) => {
   const [deleteTodo] = useDeleteTodoMutation();
 
   function deleteHandler(id: number) {
-    deleteTodo(id.toString());
+    deleteTodo(id);
   }
 
   return (
