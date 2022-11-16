@@ -24,6 +24,9 @@ const TodoForm: React.FunctionComponent<ITodoFormProps> = (props) => {
         title: title,
         completed: isComplete,
       });
+      setTodoId("");
+      setUserId("");
+      setTitle("");
     }
 
     setValidated(true);
