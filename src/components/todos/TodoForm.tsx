@@ -1,10 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import {
-  useAddTodoMutation,
-  useDeleteTodoMutation,
-} from "../../reducers/api/todosApi";
+import { useAddTodoMutation } from "../../reducers/api/todosApi";
 interface ITodoFormProps {}
 
 const TodoForm: React.FunctionComponent<ITodoFormProps> = (props) => {
@@ -12,8 +9,6 @@ const TodoForm: React.FunctionComponent<ITodoFormProps> = (props) => {
   const [title, setTitle] = useState("");
   const [isComplete, setIsComplete] = useState(false);
   const [userId, setUserId] = useState("");
-
-  const [deleteTodo] = useDeleteTodoMutation();
   const [addTodo] = useAddTodoMutation();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,10 +27,6 @@ const TodoForm: React.FunctionComponent<ITodoFormProps> = (props) => {
     });
 
     setValidated(true);
-  };
-
-  const handleDelete = () => {
-    deleteTodo("3");
   };
 
   return (
