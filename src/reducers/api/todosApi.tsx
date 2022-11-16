@@ -11,7 +11,29 @@ export const todosApi = createApi({
     todo: builder.query<Todo, string>({
       query: (id) => `/todos/${id}`,
     }),
+    deleteTodo: builder.mutation<Todo, string>({
+      query(id) {
+        return {
+          url: `todos/${id}`,
+          method: "DELETE",
+        };
+      },
+    }),
+    addTodo: builder.mutation<void, Todo>({
+      query(todo) {
+        return {
+          url: `todos`,
+          method: "POST",
+          body: todo,
+        };
+      },
+    }),
   }),
 });
 
-export const { useTodosQuery, useTodoQuery } = todosApi;
+export const {
+  useTodosQuery,
+  useTodoQuery,
+  useDeleteTodoMutation,
+  useAddTodoMutation,
+} = todosApi;
