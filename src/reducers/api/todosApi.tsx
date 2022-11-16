@@ -13,7 +13,7 @@ export const todosApi = createApi({
     todo: builder.query<Todo, number>({
       query: (id) => `/todos/${id}`,
     }),
-    deleteTodo: builder.mutation<Todo, number>({
+    deleteTodo: builder.mutation<void, number>({
       query(id) {
         return {
           url: `todos/${id}`,
