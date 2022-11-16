@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Col, Table } from "react-bootstrap";
 import {
   useDeleteTodoMutation,
   useTodosQuery,
@@ -17,11 +17,11 @@ const TodoTable: React.FunctionComponent<ITodoTableProps> = (props) => {
   }
 
   return (
-    <>
+    <Col sm="12">
       {error && <p>Error Occurred</p>}
       {(isFetching || isLoading) && <p>Loading..</p>}
       {isSuccess && (
-        <Table striped bordered hover>
+        <Table striped bordered>
           <thead>
             <tr>
               <th>Id</th>
@@ -63,7 +63,7 @@ const TodoTable: React.FunctionComponent<ITodoTableProps> = (props) => {
           </tbody>
         </Table>
       )}
-    </>
+    </Col>
   );
 };
 

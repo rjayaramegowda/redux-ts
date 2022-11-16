@@ -1,4 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
+import TodoForm from "./components/todos/TodoForm";
 import TodoTable from "./components/todos/TodoTable";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
             <Container>
               <Row className="mt-5">
                 <TodoTable />
+                <TodoForm />
               </Row>
             </Container>
           </Col>

@@ -30,6 +30,7 @@ export const todosApi = createApi({
           body: todo,
         };
       },
+      invalidatesTags: ["Todo"],
     }),
   }),
 });
